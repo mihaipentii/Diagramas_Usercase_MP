@@ -1,0 +1,38 @@
+@startuml
+skinparam style strictuml
+header Sistema de Restaurant - Basat en D13
+actor "Client" as C
+boundary "Interfície Comanda" as UI
+control "Gestor Comandes" as GC
+entity "Comanda" as COM
+actor "Cuiner" as K
+
+title Sistema de Comandes Restaurant
+
+== Selecció ==
+C -> UI: seleccionarPlats(Llista)
+activate UI
+UI -> GC: validarPlats(Llista)
+activate GC
+GC --> UI: validado
+deactivate GC
+UI --> C: mostrar confirmació
+deactivate UI
+
+
+== Creació y Pagament ==
+C -> UI: confirmarComanda()
+activate UI
+UI -> GC: generarComanda(plats)
+activate GC
+create COM
+GC -> COM: new(plats)
+GC --> UI: comanda creade
+deactivate GC
+
+
+
+
+
+== Fase de Notificació a Cuina ==
+@enduml
