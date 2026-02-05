@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor "Administrador" as A
+actor "Usuari" as U
+actor "Usuari Registrat" as UR
+
+UR --|> U
+
+rectangle "Sistema de Venda d'Entrades" {
+    usecase "Afegir esdeveniments" as UC1
+    usecase "Gestionar vendes" as UC2
+    usecase "Cercar esdeveniments" as UC3
+    usecase "Comprar estrada" as UC4
+    usecase "Veure historial" as UC5
+    usecase "Cancelar entrada" as UC6
+
+    A --> UC1
+    A --> UC2
+    U --> UC3
+    U --> UC4
+    UR --> UC5
+    UR --> UC6
+
+    UC3 <.. UC4 : <<extend>>
+}
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor "Cliente" as C
+actor "Administrador de Hotel" as A
+
+rectangle "Sistema de Reserva de Hoteles" {
+    usecase "Cercar hotels" as UC1
+    usecase "Fer reserva" as UC2
+    usecase "Cancel·lar reserva" as UC3
+    usecase "Gestionar reserves" as UC4
+    usecase "Afegir nous hotels" as UC5
+    usecase "Enviar recordatori" as UC6
+
+    C --> UC1
+    C --> UC2
+    C --> UC3
+
+    A --> UC4
+    A --> UC5
+
+    UC2 <.. UC6 : <<extend>>
+
+    A --|> C
+}
+
+note right of UC6
+  S'activa quan la reserva s'apropa
+end note
+
+@enduml

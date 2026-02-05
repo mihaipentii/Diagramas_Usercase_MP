@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor "Bibliotecari" as B
+actor "Usuari" as U
+actor "Sistema" as S
+
+rectangle "Sistema de Gestió d'Una Biblioteca" {
+    usecase "Registrar un llibre nou" as UC1
+    usecase "Gestionar prestec" as UC2
+    usecase "Buscar llibre" as UC3
+    usecase "Demanar llibre en prestec" as UC4
+    usecase "Notificar retard" as UC5
+
+    B --> UC1
+    B --> UC2
+    U --> UC3
+    U --> UC4 : Aprovar/Rebutjar
+    UC4 <.. UC5 : <<extend>>
+    UC5 <-- S
+
+}
+@enduml

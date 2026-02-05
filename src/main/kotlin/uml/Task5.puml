@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+actor "Client" as C
+actor "Cuiner" as K
+actor "Repartidor" as R
+
+rectangle "Sistema de Comandes Restaurant" {
+    usecase "Fer comanda" as UC1
+    usecase "Seleccionar plats" as UC2
+    usecase "Pagar comanda" as UC3
+    usecase "Afegir propina" as UC4
+    usecase "Veure comandes pendents" as UC5
+    usecase "Lliurar comanda" as UC6
+    usecase "Notificar entrega" as UC7
+
+    C --> UC1
+    C --> UC3
+
+    UC1 ..> UC2 : <<include>>
+    UC3 <.. UC4 : <<extend>>
+
+    K --> UC5
+
+    R --> UC6
+    R --> UC7
+}
+
+
+@enduml

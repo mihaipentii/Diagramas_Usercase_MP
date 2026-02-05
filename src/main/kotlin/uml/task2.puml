@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+actor "Professor" as P
+actor "Estudiant" as E
+actor "Banco" as B
+
+rectangle "Plataforma d'E-learning" {
+    usecase "Crear cursos" as UC1
+    usecase "Gestionar continguts" as UC2
+    usecase "Inscriure a curs" as UC3
+    usecase "Validar pagament" as UC4
+
+    P --> UC1
+    P --> UC2
+    E --> UC3
+    UC3 ..> UC4 : <<include>>
+    B --> UC4
+
+}
+
+@enduml
