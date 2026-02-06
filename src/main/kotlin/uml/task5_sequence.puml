@@ -27,8 +27,26 @@ UI -> GC: generarComanda(plats)
 activate GC
 create COM
 GC -> COM: new(plats)
-GC --> UI: comanda creade
+GC --> UI: comanda creada
 deactivate GC
+
+C -> UI: pagar()
+UI -> GC: processarPagament()
+activate GC
+
+alt si vol afegir propina
+    C -> UI: introduirPropina(import)
+    UI -> GC: aplicarPropina(id, import)
+    GC -> COM: setPropina(import)
+end
+
+GC --> UI: pagament finalitzat
+deactivate GC
+UI --> C: lliurar tiquet
+deactivate UI
+
+== Notificació a Cuina ==
+GC -> K: notificarNouPedido(id)
 
 
 
