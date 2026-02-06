@@ -1,6 +1,5 @@
 @startuml
-skinparam style strictuml
-header Sistema de Restaurant - Basat en D13
+header Sistema de Restaurant
 actor "Client" as C
 boundary "Interfície Comanda" as UI
 control "Gestor Comandes" as GC
@@ -47,10 +46,4 @@ deactivate UI
 
 == Notificació a Cuina ==
 GC -> K: notificarNouPedido(id)
-
-
-
-
-
-== Fase de Notificació a Cuina ==
 @enduml
